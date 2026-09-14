@@ -1,12 +1,12 @@
 %init
-clear;
-clc;
+clear all;
 close all;
+clc;
 
 %config
 FIGURE_WIDTH = 3000;
 FIGURE_HEIGHT = 2000;
-LINE_WIDTH = 0.1;
+LINE_WIDTH = 1;
 X_LABEL = "Time(year)";
 Y_LABEL = "Sunspot Numbers";
 
@@ -35,13 +35,13 @@ function ma = movingAverage(data, point)
 end
 
 %read
-data = readtable("SN_d_tot_V2.0.txt");
+data = readtable("SN_m_tot_V2.0.txt");
 sizeofData = size(data);
 sizeofData = sizeofData(1);
 
 %handle data
-sunSpotNum = int16(data.Var5);
-period = datetime(data.Var1, data.Var2, data.Var3);
+sunSpotNum = int16(data.Var4);
+period = datetime(data.Var1, data.Var2, 1);
 
 for i = 1 : sizeofData
     if(sunSpotNum(i) < 0)
